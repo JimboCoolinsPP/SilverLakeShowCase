@@ -2,121 +2,77 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f4fbff;
-  color: #1f2a33;
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(90deg, #6ec1e4, #4aa8d8);
+  background: #6ec1e4;
   color: white;
-  padding: 15px 25px;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-/* TITLE */
-.logo-container h1 {
-  font-size: 22px;
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-
-/* NAV */
-nav {
-  display: flex;
-  gap: 18px;
 }
 
 nav a {
   color: white;
+  margin-left: 15px;
   text-decoration: none;
-  font-size: 16px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-nav a:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(180deg, #d9f3ff, #f4fbff);
-}
-
-.hero h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
+  padding: 40px;
+  background: #d9f3ff;
 }
 
 /* PRODUCTS */
 .products {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  padding: 40px 20px;
-  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
 }
 
 .product-card {
   background: white;
   padding: 15px;
-  border-radius: 12px;
+  border-radius: 10px;
   width: 200px;
   text-align: center;
-
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  transition: all 0.2s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .product-card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
 }
 
 /* BUTTON */
 button {
-  background: linear-gradient(90deg, #6ec1e4, #4aa8d8);
+  background: #6ec1e4;
   border: none;
-  padding: 10px 12px;
+  padding: 8px;
   color: white;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-button:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
 }
 
 /* ABOUT */
 .about {
   text-align: center;
-  padding: 50px 20px;
+  padding: 30px;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   background: #6ec1e4;
   color: white;
-  margin-top: 40px;
 }
