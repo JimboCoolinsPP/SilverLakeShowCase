@@ -11,6 +11,12 @@ header {
   z-index: 1000;
 }
 
+.logo-container img {
+  width: 45px !important;
+  height: auto !important;
+  display: block;
+}
+
 /* LEFT SIDE (logo + title) */
 .logo-container {
   display: flex;
