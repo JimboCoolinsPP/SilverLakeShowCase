@@ -1,0 +1,21 @@
+{
+  "food": [
+    {
+      "name": "Snack Bundle",
+      "price": "$12.99",
+      "image": "item1.jpg",
+      "link": "https://ebay.com"
+    },
+    {
+      "name": "Candy Pack",
+      "price": "$8.99",
+      "image": "item2.jpg",
+      "link": "https://ebay.com"
+    }
+  ],
+  "cleaning": [],
+  "health": [],
+  "beverages": [],
+  "tools": [],
+  "appliances": []
+}
