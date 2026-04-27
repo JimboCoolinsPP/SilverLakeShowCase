@@ -5,41 +5,78 @@
   <title>SilverLake ShowCase</title>
   <link rel="stylesheet" href="style.css">
 </head>
- 
-<!-- 🔹 HERO -->
+
+<body>
+
+  <!-- 🔹 HERO -->
   <section class="hero">
     <h2>Handpicked Deals. Updated Often.</h2>
     <p>Snacks, bundles, and more — all in one place.</p>
   </section>
 
-  <!-- 🔹 FEATURED PRODUCTS -->
-  <section class="products">
-
-    <div class="product-card">
-      <img src="item1.jpg">
-      <h3>Snack Bundle</h3>
-      <p>$12.99</p>
-      <a href="https://ebay.com" target="_blank">
-        <button>View on eBay</button>
-      </a>
-    </div>
-
-    <div class="product-card">
-      <img src="item2.jpg">
-      <h3>Candy Pack</h3>
-      <p>$8.99</p>
-      <a href="https://ebay.com" target="_blank">
-        <button>View on eBay</button>
-      </a>
-    </div>
-
-    <div class="product-card">
-      <img src="item3.jpg">
-      <h3>Chips Bundle</h3>
-      <p>$10.99</p>
-      <a href="https://ebay.com" target="_blank">
-        <button>View on eBay</button>
-      </a>
-    </div>
-
+  <!-- 🔹 FOOD / SNACKS -->
+  <section class="products" id="food">
+    <h2>Food / Snacks</h2>
   </section>
+
+  <!-- 🔹 CLEANING -->
+  <section class="products" id="cleaning">
+    <h2>Cleaning Supplies</h2>
+  </section>
+
+  <!-- 🔹 HEALTH -->
+  <section class="products" id="health">
+    <h2>Health & Beauty</h2>
+  </section>
+
+  <!-- 🔹 BEVERAGES -->
+  <section class="products" id="beverages">
+    <h2>Beverages</h2>
+  </section>
+
+  <!-- 🔹 TOOLS -->
+  <section class="products" id="tools">
+    <h2>Tools</h2>
+  </section>
+
+  <!-- 🔹 APPLIANCES -->
+  <section class="products" id="appliances">
+    <h2>Appliances</h2>
+  </section>
+
+  <!-- 🔹 SCRIPT (this loads products from JSON) -->
+  <script>
+  fetch("products.json")
+    .then(res => res.json())
+    .then(data => {
+      loadProducts("food", data.food);
+      loadProducts("cleaning", data.cleaning);
+      loadProducts("health", data.health);
+      loadProducts("beverages", data.beverages);
+      loadProducts("tools", data.tools);
+      loadProducts("appliances", data.appliances);
+    });
+
+  function loadProducts(sectionId, items) {
+    const section = document.getElementById(sectionId);
+
+    items.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "product-card";
+
+      div.innerHTML = `
+        <img src="${item.image}">
+        <h3>${item.name}</h3>
+        <p>${item.price}</p>
+        <a href="${item.link}" target="_blank">
+          <button>View on eBay</button>
+        </a>
+      `;
+
+      section.appendChild(div);
+    });
+  }
+  </script>
+
+</body>
+</html>
