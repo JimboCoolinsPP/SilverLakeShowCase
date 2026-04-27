@@ -53,7 +53,6 @@
 <section class="products" id="tools"><h2>Tools</h2></section>
 <section class="products" id="appliances"><h2>Appliances</h2></section>
 
-<!-- 🔹 SCRIPT -->
 <script>
 let cart = [];
 
@@ -79,7 +78,7 @@ function loadAllProducts() {
         <img src="${item.image}">
         <h3>${item.name}</h3>
         <p>$${item.price}</p>
-        <button onclick="addToCart('${item.name}', '${item.price}')">
+        <button onclick="addToCart('${item.name}', ${item.price})">
           Add to Cart
         </button>
       `;
@@ -91,13 +90,15 @@ function loadAllProducts() {
 
 /* CART */
 function addToCart(name, price) {
-  cart.push({ name, price });
+  cart.push({ name, price: parseFloat(price) });
   updateCart();
 }
 
+/* UPDATE CART UI */
 function updateCart() {
   const cartList = document.getElementById("cart-items");
   const totalEl = document.getElementById("cart-total");
+  const countEl = document.getElementById("cart-count");
 
   cartList.innerHTML = "";
 
@@ -105,13 +106,20 @@ function updateCart() {
 
   cart.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${item.name} - ${item.price}`;
+    li.textContent = `${item.name} - $${item.price}`;
     cartList.appendChild(li);
 
-    total += parseFloat(item.price);
+    total += item.price;
   });
 
   totalEl.textContent = "Total: $" + total.toFixed(2);
+  countEl.textContent = cart.length;
+}
+
+/* DROPDOWN TOGGLE */
+function toggleCart() {
+  const box = document.getElementById("cart-box");
+  box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
 /* RESERVATION */
@@ -124,12 +132,10 @@ function reserveOrder() {
   let orderText = "Reservation Request:\n\n";
 
   cart.forEach(item => {
-    orderText += `${item.name} - ${item.price}\n`;
+    orderText += `${item.name} - $${item.price}\n`;
   });
 
-  const total = cart.reduce((sum, item) => {
-    return sum + parseFloat(item.price);
-  }, 0);
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   orderText += `\nTotal: $${total.toFixed(2)}`;
 
@@ -142,7 +148,6 @@ function reserveOrder() {
 
 /* INIT */
 loadAllProducts();
-
 </script>
 
 </body>
