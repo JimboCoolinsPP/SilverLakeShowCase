@@ -12,10 +12,23 @@
   <h1>SilverLake Showcase</h1>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-  </nav>
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="about.html">About</a>
+
+  <!-- CART DROPDOWN -->
+  <div class="cart-dropdown">
+    <button onclick="toggleCart()" class="cart-btn">
+      🛒 Cart (<span id="cart-count">0</span>)
+    </button>
+
+    <div id="cart-box" class="cart-box">
+      <ul id="cart-items"></ul>
+      <p id="cart-total">Total: $0.00</p>
+      <button onclick="reserveOrder()">Reserve Pickup</button>
+    </div>
+  </div>
+</nav>
 </header>
 
 <!-- 🔹 HERO -->
