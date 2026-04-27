@@ -54,8 +54,10 @@
   <section class="products" id="appliances">
     <h2>Appliances</h2>
   </section>
+<script>
+let cart = [];
 
- <script>
+// LOAD PRODUCTS
 fetch("products.json")
   .then(res => res.json())
   .then(data => {
@@ -67,6 +69,7 @@ fetch("products.json")
     loadProducts("appliances", data.appliances);
   });
 
+// DISPLAY PRODUCTS
 function loadProducts(sectionId, items) {
   const section = document.getElementById(sectionId);
 
@@ -78,12 +81,65 @@ function loadProducts(sectionId, items) {
       <img src="${item.image}">
       <h3>${item.name}</h3>
       <p>${item.price}</p>
+      <button onclick="addToCart('${item.name}', '${item.price}')">
+        Add to Cart
+      </button>
     `;
 
     section.appendChild(div);
   });
 }
+
+// ADD TO CART
+function addToCart(name, price) {
+  cart.push({ name, price });
+  updateCart();
+}
+
+// UPDATE CART DISPLAY
+function updateCart() {
+  const cartList = document.getElementById("cart-items");
+  const totalEl = document.getElementById("cart-total");
+
+  cartList.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - ${item.price}`;
+    cartList.appendChild(li);
+
+    total += parseFloat(item.price.replace("$", ""));
+  });
+
+  totalEl.textContent = "Total: $" + total.toFixed(2);
+}
+  function reserveOrder() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let orderText = "Reservation Request:\n\n";
+
+  cart.forEach(item => {
+    orderText += `${item.name} - ${item.price}\n`;
+  });
+
+  const total = cart.reduce((sum, item) => {
+    return sum + parseFloat(item.price.replace("$", ""));
+  }, 0);
+
+  orderText += `\nTotal: $${total.toFixed(2)}`;
+
+  const email = "your@email.com"; // CHANGE THIS
+  const subject = "New Pickup Reservation";
+
+  window.location.href =
+    `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(orderText)}`;
+}
 </script>
 
-</body>
+</body
 </html>
