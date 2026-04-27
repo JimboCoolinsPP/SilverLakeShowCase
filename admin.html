@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Store Admin Panel</h1>
+
+<h3>Add Product</h3>
+
+<input id="name" placeholder="Product Name"><br>
+<input id="price" placeholder="Price (e.g. 9.99)"><br>
+<input id="image" placeholder="Image filename (item1.jpg)"><br>
+
+<select id="category">
+  <option value="food">Food</option>
+  <option value="cleaning">Cleaning</option>
+  <option value="health">Health</option>
+  <option value="beverages">Beverages</option>
+  <option value="tools">Tools</option>
+  <option value="appliances">Appliances</option>
+</select>
+
+<br><br>
+
+<button onclick="addProduct()">Add Product</button>
+
+<h3>Products</h3>
+<div id="list"></div>
+
+<script>
+let products = JSON.parse(localStorage.getItem("products")) || {
+  food: [],
+  cleaning: [],
+  health: [],
+  beverages: [],
+  tools: [],
+  appliances: []
+};
+
+function addProduct() {
+  const name = document.getElementById("name").value;
+  const price = document.getElementById("price").value;
+  const image = document.getElementById("image").value;
+  const category = document.getElementById("category").value;
+
+  products[category].push({ name, price, image });
+
+  localStorage.setItem("products", JSON.stringify(products));
+
+  renderList();
+}
+
+function renderList() {
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  for (let cat in products) {
+    products[cat].forEach((p, i) => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <p>${p.name} - $${p.price} (${cat})
+        <button onclick="deleteItem('${cat}', ${i})">Delete</button></p>
+      `;
+      list.appendChild(div);
+    });
+  }
+}
+
+function deleteItem(cat, index) {
+  products[cat].splice(index, 1);
+  localStorage.setItem("products", JSON.stringify(products));
+  renderList();
+}
+
+renderList();
+</script>
+
+</body>
+</html>
