@@ -20,6 +20,41 @@ nav a {
   text-decoration: none;
 }
 
+.cart-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-btn {
+  background: #6ec1e4;
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  cursor: pointer;
+}
+
+.cart-box {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: white;
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+.cart-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-box li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
 /* HERO */
 .hero {
   text-align: center;
