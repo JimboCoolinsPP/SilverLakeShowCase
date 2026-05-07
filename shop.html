@@ -28,16 +28,24 @@ window.onload = function () {
 
   <!-- CART DROPDOWN -->
   <div class="cart-dropdown">
-    <button onclick="toggleCart()" class="cart-btn">
-      🛒 Cart (<span id="cart-count">0</span>)
+
+  <button onclick="toggleCart()" class="cart-btn">
+    🛒 Cart (<span id="cart-count">0</span>)
+  </button>
+
+  <div id="cart-box" class="cart-box">
+
+    <ul id="cart-items"></ul>
+
+    <p id="cart-total">Total: $0.00</p>
+
+    <button onclick="reserveOrder()">
+      Reserve Pickup
     </button>
 
-    <div id="cart-box" class="cart-box">
-      <ul id="cart-items"></ul>
-      <p id="cart-total">Total: $0.00</p>
-      <button onclick="reserveOrder()">Reserve Pickup</button>
-    </div>
   </div>
+
+</div>
 </nav>
 </header>
 
